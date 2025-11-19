@@ -15,9 +15,11 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Briefcase, ExternalLink, Github, GraduationCap, Linkedin, Loader2, Mail, Menu, Navigation, Send, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
+import { Chatbot } from '@/components/chatbot';
+
 
 // --- DATA ---
 const profile = {
@@ -143,6 +145,13 @@ export const contactFormSchema = z.object({
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
+const portfolioData = {
+  profile,
+  projects,
+  workExperience,
+  education,
+};
+
 // --- MAIN PAGE COMPONENT ---
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState('home');
@@ -194,6 +203,7 @@ export default function PortfolioPage() {
         <ContactSection ref={sectionRefs.contact} />
       </main>
       <Footer />
+      <Chatbot portfolioData={portfolioData} />
     </div>
   );
 }
@@ -253,13 +263,11 @@ const Header = ({ activeSection }: { activeSection: string }) => {
   );
 };
 
-const Section = React.forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
-  ({ id, className, children }, ref) => (
+const Section = ({ id, className, children, ref }: { id: string; className?: string; children: React.ReactNode; ref: React.Ref<HTMLElement> }) => (
     <section id={id} ref={ref} className={cn("container max-w-5xl py-16 md:py-24", className)}>
       {children}
     </section>
-  )
-);
+  );
 Section.displayName = "Section";
 
 
@@ -269,7 +277,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-const HeroSection = React.forwardRef<HTMLElement>((props, ref) => (
+const HeroSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
   <Section id="home" ref={ref} className="!pt-20 md:!pt-28 text-center md:text-left">
     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
         <div className="md:col-span-2 space-y-4">
@@ -312,10 +320,10 @@ const HeroSection = React.forwardRef<HTMLElement>((props, ref) => (
         </div>
     </div>
   </Section>
-));
+);
 HeroSection.displayName = "HeroSection";
 
-const ProjectsSection = React.forwardRef<HTMLElement>((props, ref) => (
+const ProjectsSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
   <Section id="projects" ref={ref}>
     <SectionTitle>Projects</SectionTitle>
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -360,10 +368,10 @@ const ProjectsSection = React.forwardRef<HTMLElement>((props, ref) => (
       ))}
     </div>
   </Section>
-));
+);
 ProjectsSection.displayName = "ProjectsSection";
 
-const WorkExperienceSection = React.forwardRef<HTMLElement>((props, ref) => (
+const WorkExperienceSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
     <Section id="work" ref={ref} className="bg-muted/50">
         <SectionTitle>Work Experience</SectionTitle>
         <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
@@ -390,10 +398,10 @@ const WorkExperienceSection = React.forwardRef<HTMLElement>((props, ref) => (
           ))}
         </div>
     </Section>
-));
+);
 WorkExperienceSection.displayName = "WorkExperienceSection";
 
-const EducationSection = React.forwardRef<HTMLElement>((props, ref) => (
+const EducationSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
   <Section id="education" ref={ref}>
     <SectionTitle>Education</SectionTitle>
     <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
@@ -418,10 +426,10 @@ const EducationSection = React.forwardRef<HTMLElement>((props, ref) => (
       ))}
     </div>
   </Section>
-));
+);
 EducationSection.displayName = "EducationSection";
 
-const ContactSection = React.forwardRef<HTMLElement>((props, ref) => {
+const ContactSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => {
   const { toast } = useToast();
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -582,7 +590,7 @@ const ContactSection = React.forwardRef<HTMLElement>((props, ref) => {
       </div>
     </Section>
   );
-});
+};
 ContactSection.displayName = "ContactSection";
 
 const Footer = () => (
