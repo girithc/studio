@@ -21,86 +21,116 @@ import { z } from 'zod';
 
 // --- DATA ---
 const profile = {
-  name: 'Alex Doe',
-  introduction: "I'm a passionate Full-Stack Developer with experience in building modern web applications using React, Next.js, and Node.js. I thrive on solving complex problems and creating intuitive, user-friendly experiences.",
+  name: 'Girth Choudhary',
+  introduction: "I'm a passionate Software Engineer with a specialization in data science, experienced in building intelligent applications and scalable systems. I thrive on solving complex problems and creating impactful, data-driven solutions.",
   headshot: PlaceHolderImages.find(p => p.id === 'headshot'),
   socials: {
-    linkedin: 'https://linkedin.com',
-    github: 'https://github.com',
-    email: 'mailto:alex.doe@example.com',
+    linkedin: 'https://linkedin.com/in/girithchoudhary',
+    github: 'https://github.com/girithc',
+    email: 'mailto:girith.choudhary@example.com',
+    website: 'https://girith.up.railway.app'
   },
 };
 
-const education = [
-  {
-    institution: 'University of Technology',
-    degree: 'B.S. in Computer Science',
-    period: '2018 - 2022',
-    description: 'Graduated with honors, focusing on software engineering and artificial intelligence. Active member of the coding club.'
-  },
-  {
-    institution: 'Online Coding Bootcamp',
-    degree: 'Full-Stack Web Development',
-    period: '2022',
-    description: 'Intensive program covering MERN stack, data structures, and algorithms.'
-  },
-];
-
 const projects = [
   {
-    title: 'Project Alpha',
-    description: 'A comprehensive project management tool designed to streamline team collaboration and task tracking.',
+    title: 'AI Lifestyle Assistant',
+    description: 'An intelligent lifestyle assistant using AI agents to perform user tasks and manage personalized routines. Integrated with Google Workspace, it handles scheduling, document editing, and provides real-time assistance for studying and travel.',
     image: PlaceHolderImages.find(p => p.id === 'project-1'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma']
+    tags: ['LangChain', 'FastAPI', 'LangGraph', 'Flutter', 'Google Cloud Run', 'DeepSeek OCR', 'GPT']
   },
   {
-    title: 'Project Beta',
-    description: 'A mobile-first social networking app for hobbyists to connect and share their creations.',
+    title: 'Universal Translator App',
+    description: 'A cross-platform AI translator using LLMs and OpenAI Whisper with PyTorch for real-time, contextual translation. Features fine-tuned models with LoRA for improved accuracy and WebSocket streaming for low latency.',
     image: PlaceHolderImages.find(p => p.id === 'project-2'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['React Native', 'Firebase', 'GraphQL']
+    tags: ['Flutter', 'FastAPI', 'LangFlow', 'Qdrant', 'PyTorch', 'LoRA', 'Docker']
   },
   {
-    title: 'Project Gamma',
-    description: 'An interactive data visualization dashboard for analyzing market trends, built with D3.js.',
+    title: 'Formula 1 Race Prediction & Strategy',
+    description: 'A data-driven race outcome and driver-performance predictor using Kaggle F1 telemetry. Employs ensemble models (Random Forest, XGBoost) and time-series predictors to optimize pit-stop timing and podium predictions.',
     image: PlaceHolderImages.find(p => p.id === 'project-3'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['React', 'D3.js', 'Redux']
+    tags: ['Flutter', 'FastAPI', 'LangChain', 'PostgreSQL', 'PyTorch', 'Scikit-learn', 'XGBoost']
   },
 ];
 
+
 const workExperience = [
   {
-    company: 'Tech Solutions Inc.',
+    company: 'AMAG Ships',
     role: 'Software Engineer',
-    period: '2022 - Present',
+    period: 'Jun \'24 - Present',
     responsibilities: [
-      'Developed and maintained features for a large-scale e-commerce platform.',
-      'Collaborated with cross-functional teams to define and ship new features.',
-      'Improved application performance by 20% through code optimization.',
+      'Built an AI-driven ship management platform with agent-powered mobile apps, automating onboard workflows and boosting crew productivity by 50%.',
+      'Implemented real-time diagnostics for repair analysis and automated cost estimation.',
+      'Deployed AI modules for bookkeeping and route optimization, enhancing efficiency and record accuracy.',
     ]
   },
   {
-    company: 'Web Innovators LLC',
-    role: 'Junior Web Developer',
-    period: '2021 - 2022',
+    company: 'Otto Mart',
+    role: 'Founder',
+    period: 'Jun \'23 - May \'24',
     responsibilities: [
-      'Assisted in building responsive websites for various clients.',
-      'Translated UI/UX designs into functional and interactive web pages.',
-      'Gained experience with modern frontend frameworks and libraries.',
+      'Developed Golang microservices on GCP (Cloud Run/SQL) serving 1000+ daily users.',
+      'Automated CI/CD with GitHub Actions and canary deploys; reduced release time by 80%.',
+      'Built core e-commerce features including catalog, search, checkout, order tracking, and payments.',
+    ]
+  },
+  {
+    company: 'AMAG Ships',
+    role: 'Software Engineer Intern',
+    period: 'May \'22 - Aug \'22',
+    responsibilities: [
+      'Built a scalable discussion forum using FastAPI, Redis queues, and background workers; added unit tests for CI reliability.',
+      'Developed a real-time notification system for task and deadline alerts, reaching 10,000+ users with sub-second latency.',
+    ]
+  },
+  {
+    company: 'ACA Foreside',
+    role: 'Software Engineer Intern',
+    period: 'May \'21 - Jul \'21',
+    responsibilities: [
+      'Integrated Salesforce with Great Plains (REST + ETL) syncing 10k+ records/day.',
+      'Built Python validation microservice, cutting errors by 90% and achieving 99.9% uptime.',
+      'Added unit and integration tests with nightly CI jobs, improving reliability and deployment stability.',
+    ]
+  },
+  {
+    company: 'University of Alabama',
+    role: 'Undergraduate Research Assistant',
+    period: 'Jan \'21 - May \'21',
+    responsibilities: [
+      'Wrote Python tooling to preprocess datasets and generate experiment plots; accelerated lab workflow by 30%.',
+      'Studied and implemented interval arithmetic and uncertainty propagation operations in Python.',
     ]
   }
 ];
 
+const education = [
+  {
+    institution: 'San Jose State University',
+    degree: 'M.S. Software Engineering (Data Science)',
+    period: 'Expected Dec \'26',
+    description: 'Specializing in data science, focusing on advanced machine learning, data engineering, and large-scale software systems.'
+  },
+  {
+    institution: 'University of Alabama',
+    degree: 'B.S. Computer Science & Mathematics',
+    period: 'Graduated May \'23',
+    description: 'Double major with coursework in Deep Learning, Data Mining, and Distributed Systems.'
+  },
+];
+
 const navItems = [
   { name: 'Home', id: 'home' },
-  { name: 'Education', id: 'education' },
   { name: 'Projects', id: 'projects' },
   { name: 'Work', id: 'work' },
+  { name: 'Education', id: 'education' },
   { name: 'Contact', id: 'contact' },
 ];
 
@@ -118,9 +148,9 @@ export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState('home');
   const sectionRefs = {
     home: useRef<HTMLElement>(null),
-    education: useRef<HTMLElement>(null),
     projects: useRef<HTMLElement>(null),
     work: useRef<HTMLElement>(null),
+    education: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null),
   };
 
@@ -136,14 +166,15 @@ export default function PortfolioPage() {
       { rootMargin: '-30% 0px -70% 0px' }
     );
 
-    Object.values(sectionRefs).forEach((ref) => {
+    const refs = { ...sectionRefs };
+    Object.values(refs).forEach((ref) => {
       if (ref.current) {
         observer.observe(ref.current);
       }
     });
 
     return () => {
-      Object.values(sectionRefs).forEach((ref) => {
+      Object.values(refs).forEach((ref) => {
         if (ref.current) {
           observer.unobserve(ref.current);
         }
@@ -157,9 +188,9 @@ export default function PortfolioPage() {
       <Header activeSection={activeSection} />
       <main className="flex-1">
         <HeroSection ref={sectionRefs.home} />
-        <EducationSection ref={sectionRefs.education} />
         <ProjectsSection ref={sectionRefs.projects} />
         <WorkExperienceSection ref={sectionRefs.work} />
+        <EducationSection ref={sectionRefs.education} />
         <ContactSection ref={sectionRefs.contact} />
       </main>
       <Footer />
@@ -248,7 +279,7 @@ const HeroSection = React.forwardRef<HTMLElement>((props, ref) => (
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0">
                 {profile.introduction}
             </p>
-            <div className="flex justify-center md:justify-start gap-4 pt-4">
+            <div className="flex justify-center md:justify-start gap-4 pt-4 flex-wrap">
                 <Button asChild>
                     <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">
                         <Linkedin /> LinkedIn
@@ -257,6 +288,11 @@ const HeroSection = React.forwardRef<HTMLElement>((props, ref) => (
                 <Button variant="secondary" asChild>
                     <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">
                         <Github /> GitHub
+                    </a>
+                </Button>
+                 <Button variant="secondary" asChild>
+                    <a href={profile.socials.website} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink /> Website
                     </a>
                 </Button>
                 <Button variant="outline" asChild>
@@ -279,34 +315,6 @@ const HeroSection = React.forwardRef<HTMLElement>((props, ref) => (
 ));
 HeroSection.displayName = "HeroSection";
 
-const EducationSection = React.forwardRef<HTMLElement>((props, ref) => (
-  <Section id="education" ref={ref} className="bg-muted/50">
-    <SectionTitle>Education</SectionTitle>
-    <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
-      {education.map((item, index) => (
-        <div key={index} className="relative flex items-start">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
-            <GraduationCap className="h-5 w-5" />
-          </div>
-          <Card className="ml-8 flex-1">
-            <CardHeader>
-              <CardTitle>{item.degree}</CardTitle>
-              <CardDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <span>{item.institution}</span>
-                <span className="font-medium">{item.period}</span>
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
-            </CardContent>
-          </Card>
-        </div>
-      ))}
-    </div>
-  </Section>
-));
-EducationSection.displayName = "EducationSection";
-
 const ProjectsSection = React.forwardRef<HTMLElement>((props, ref) => (
   <Section id="projects" ref={ref}>
     <SectionTitle>Projects</SectionTitle>
@@ -327,9 +335,9 @@ const ProjectsSection = React.forwardRef<HTMLElement>((props, ref) => (
           )}
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
-            <CardDescription>{project.description}</CardDescription>
           </CardHeader>
-          <CardContent className="flex-1">
+          <CardContent className="flex-1 space-y-4">
+             <CardDescription>{project.description}</CardDescription>
             <div className="flex flex-wrap gap-2">
                 {project.tags.map(tag => (
                     <span key={tag} className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full">{tag}</span>
@@ -384,6 +392,34 @@ const WorkExperienceSection = React.forwardRef<HTMLElement>((props, ref) => (
     </Section>
 ));
 WorkExperienceSection.displayName = "WorkExperienceSection";
+
+const EducationSection = React.forwardRef<HTMLElement>((props, ref) => (
+  <Section id="education" ref={ref}>
+    <SectionTitle>Education</SectionTitle>
+    <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
+      {education.map((item, index) => (
+        <div key={index} className="relative flex items-start">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
+            <GraduationCap className="h-5 w-5" />
+          </div>
+          <Card className="ml-8 flex-1">
+            <CardHeader>
+              <CardTitle>{item.degree}</CardTitle>
+              <CardDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <span>{item.institution}</span>
+                <span className="font-medium">{item.period}</span>
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">{item.description}</p>
+            </CardContent>
+          </Card>
+        </div>
+      ))}
+    </div>
+  </Section>
+));
+EducationSection.displayName = "EducationSection";
 
 const ContactSection = React.forwardRef<HTMLElement>((props, ref) => {
   const { toast } = useToast();
@@ -446,7 +482,7 @@ const ContactSection = React.forwardRef<HTMLElement>((props, ref) => {
 
 
   return (
-    <Section id="contact" ref={ref}>
+    <Section id="contact" ref={ref} className="bg-muted/50">
       <SectionTitle>Get in Touch</SectionTitle>
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
@@ -457,15 +493,15 @@ const ContactSection = React.forwardRef<HTMLElement>((props, ref) => {
             <div className="space-y-4">
                 <a href={profile.socials.email} className="flex items-center gap-4 group">
                     <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">alex.doe@example.com</span>
+                    <span className="text-muted-foreground group-hover:text-primary transition-colors">girith.choudhary@example.com</span>
                 </a>
                 <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                     <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">linkedin.com/in/alex-doe</span>
+                    <span className="text-muted-foreground group-hover:text-primary transition-colors">linkedin.com/in/girithchoudhary</span>
                 </a>
                 <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                     <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">github.com/alex-doe</span>
+                    <span className="text-muted-foreground group-hover:text-primary transition-colors">github.com/girithc</span>
                 </a>
             </div>
              <div className="pt-4">
