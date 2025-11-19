@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Briefcase, ExternalLink, Github, GraduationCap, Linkedin, Loader2, Mail, Menu, Navigation, Send, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, forwardRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { Chatbot } from '@/components/chatbot';
@@ -30,7 +30,6 @@ const profile = {
     linkedin: 'https://linkedin.com/in/girithchoudhary',
     github: 'https://github.com/girithc',
     email: 'mailto:girith.choudhary@example.com',
-    website: 'https://girith.up.railway.app'
   },
 };
 
@@ -263,11 +262,13 @@ const Header = ({ activeSection }: { activeSection: string }) => {
   );
 };
 
-const Section = ({ id, className, children, ref }: { id: string; className?: string; children: React.ReactNode; ref: React.Ref<HTMLElement> }) => (
+const Section = forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
+  ({ id, className, children }, ref) => (
     <section id={id} ref={ref} className={cn("container max-w-5xl py-16 md:py-24", className)}>
       {children}
     </section>
-  );
+  )
+);
 Section.displayName = "Section";
 
 
@@ -277,7 +278,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-const HeroSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
+const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="home" ref={ref} className="!pt-20 md:!pt-28 text-center md:text-left">
     <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
         <div className="md:col-span-2 space-y-4">
@@ -298,11 +299,6 @@ const HeroSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
                         <Github /> GitHub
                     </a>
                 </Button>
-                 <Button variant="secondary" asChild>
-                    <a href={profile.socials.website} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink /> Website
-                    </a>
-                </Button>
                 <Button variant="outline" asChild>
                     <a href={profile.socials.email}>
                         <Mail /> Email
@@ -320,10 +316,10 @@ const HeroSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
         </div>
     </div>
   </Section>
-);
+));
 HeroSection.displayName = "HeroSection";
 
-const ProjectsSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
+const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="projects" ref={ref}>
     <SectionTitle>Projects</SectionTitle>
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -368,10 +364,10 @@ const ProjectsSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
       ))}
     </div>
   </Section>
-);
+));
 ProjectsSection.displayName = "ProjectsSection";
 
-const WorkExperienceSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
+const WorkExperienceSection = forwardRef<HTMLElement, {}>((props, ref) => (
     <Section id="work" ref={ref} className="bg-muted/50">
         <SectionTitle>Work Experience</SectionTitle>
         <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
@@ -398,10 +394,10 @@ const WorkExperienceSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
           ))}
         </div>
     </Section>
-);
+));
 WorkExperienceSection.displayName = "WorkExperienceSection";
 
-const EducationSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
+const EducationSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="education" ref={ref}>
     <SectionTitle>Education</SectionTitle>
     <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
@@ -426,10 +422,10 @@ const EducationSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => (
       ))}
     </div>
   </Section>
-);
+));
 EducationSection.displayName = "EducationSection";
 
-const ContactSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => {
+const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
   const { toast } = useToast();
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -590,7 +586,7 @@ const ContactSection = ({ ref }: { ref: React.Ref<HTMLElement> }) => {
       </div>
     </Section>
   );
-};
+});
 ContactSection.displayName = "ContactSection";
 
 const Footer = () => (
