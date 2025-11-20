@@ -272,7 +272,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
 
 const Section = forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
   ({ id, className, children }, ref) => (
-    <section id={id} ref={ref} className={cn("container max-w-5xl py-20 md:py-28 px-8", className)}>
+    <section id={id} ref={ref} className={cn("container max-w-5xl py-24 md:py-32 px-8", className)}>
       {children}
     </section>
   )
@@ -287,7 +287,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
-  <Section id="home" ref={ref} className="!pt-24 md:!pt-32 text-center">
+  <Section id="home" ref={ref} className="!pt-32 md:!pt-40 text-center">
     <div className="space-y-6">
         <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
             {profile.name}
