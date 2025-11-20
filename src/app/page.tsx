@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Briefcase, ExternalLink, Github, GraduationCap, Linkedin, Loader2, Mail, Menu, Navigation, Send, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useRef, useState, forwardRef } from 'react';
+import React, { useEffect, useRef, useState, forwardRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { z } from 'zod';
 import { Chatbot } from '@/components/chatbot';
@@ -24,7 +24,6 @@ import { Chatbot } from '@/components/chatbot';
 const profile = {
   name: 'Girth Choudhary',
   introduction: "I'm a passionate Software Engineer with a specialization in data science, experienced in building intelligent applications and scalable systems. I thrive on solving complex problems and creating impactful, data-driven solutions.",
-  headshot: PlaceHolderImages.find(p => p.id === 'headshot'),
   socials: {
     linkedin: 'https://linkedin.com/in/girithchoudhary',
     github: 'https://github.com/girithc',
@@ -34,29 +33,41 @@ const profile = {
 
 const projects = [
   {
-    title: 'AI Lifestyle Assistant',
-    description: 'An intelligent lifestyle assistant using AI agents to perform user tasks and manage personalized routines. Integrated with Google Workspace, it handles scheduling, document editing, and provides real-time assistance for studying and travel.',
+    title: 'Email Automation Using AI Agents',
+    description: 'Built self-healing agentic pipeline automating email, scheduling, and workspace tasks with adaptive recovery. Deployed GCP Pub/Sub microservices with Firebase notifications for iPhone users and real-time updates. Reduced customer email workflow time by 80% through autonomous coordination and intent-driven tasking.',
     image: PlaceHolderImages.find(p => p.id === 'project-1'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['LangChain', 'FastAPI', 'LangGraph', 'Flutter', 'Google Cloud Run', 'DeepSeek OCR', 'GPT']
+    tags: ['LangChain', 'FastAPI', 'LangGraph', 'Google Workspace API', 'GCP Pub/Sub', 'Whisper', 'Firebase', 'GPT']
   },
   {
     title: 'Universal Translator App',
-    description: 'A cross-platform AI translator using LLMs and OpenAI Whisper with PyTorch for real-time, contextual translation. Features fine-tuned models with LoRA for improved accuracy and WebSocket streaming for low latency.',
+    description: 'Created cross-language translator with real-time speech processing and LoRA-tuned models. Used WebSocket streaming via FastAPI for low-latency inference and adaptive language learning. Containerized and deployed app on Apple App Store.',
     image: PlaceHolderImages.find(p => p.id === 'project-2'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['Flutter', 'FastAPI', 'LangFlow', 'Qdrant', 'PyTorch', 'LoRA', 'Docker']
+    tags: ['Flutter', 'FastAPI', 'Whisper', 'PyTorch', 'LoRA', 'Docker']
   },
   {
-    title: 'Formula 1 Race Prediction & Strategy',
-    description: 'A data-driven race outcome and driver-performance predictor using Kaggle F1 telemetry. Employs ensemble models (Random Forest, XGBoost) and time-series predictors to optimize pit-stop timing and podium predictions.',
+    title: 'McKinsey Consultant Agent',
+    description: 'Built an autonomous McKinsey-style consultant agent for strategic reasoning and hypothesis-driven research. Implemented self-healing LangGraph agents enabling recursive analysis, validation, and adaptive planning. Integrated web search and Python grep tools for analytics with React Flow visualizing evolving hypothesis trees.',
     image: PlaceHolderImages.find(p => p.id === 'project-3'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['Flutter', 'FastAPI', 'LangChain', 'PostgreSQL', 'PyTorch', 'Scikit-learn', 'XGBoost']
+    tags: ['FastAPI', 'LangGraph', 'LangChain', 'React', 'AsyncIO', 'Vector DB', 'WebSockets', 'React Flow']
   },
+   {
+    title: 'Formula 1 Race Strategy System',
+    description: 'Built hybrid XGBoost-LSTM pipeline for race and in-lap prediction using pit, tire, and circuit telemetry (2.7 MAE). Deployed FastAPI inference with Pydantic validation, probabilistic outputs, and reload-safe joblib artifacts. Added scenario comparison, robustness scoring, and multi-endpoint strategy API (/predict, /compare, /whatif).',
+    image: {
+        id: 'project-4',
+        imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3NjMzOTk3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+        imageHint: 'data visualization'
+    },
+    liveUrl: '#',
+    githubUrl: '#',
+    tags: ['FastAPI', 'Python', 'XGBoost', 'LSTM', 'NumPy/Pandas', 'Pydantic', 'Joblib', 'Next.js']
+  }
 ];
 
 
@@ -64,11 +75,10 @@ const workExperience = [
   {
     company: 'AMAG Ships',
     role: 'Software Engineer',
-    period: 'Jun \'24 - Present',
+    period: 'Jun \'24 - Nov \'25',
     responsibilities: [
-      'Built an AI-driven ship management platform with agent-powered mobile apps, automating onboard workflows and boosting crew productivity by 50%.',
-      'Implemented real-time diagnostics for repair analysis and automated cost estimation.',
-      'Deployed AI modules for bookkeeping and route optimization, enhancing efficiency and record accuracy.',
+        'Built agent-based ship management platform using quantized LLMs, LangGraph, and FastAPI microservices.',
+        'Deployed predictive models for diagnostics and cost estimation with RAG retrieval and WebSocket streaming.'
     ]
   },
   {
@@ -76,9 +86,9 @@ const workExperience = [
     role: 'Founder',
     period: 'Jun \'23 - May \'24',
     responsibilities: [
-      'Developed Golang microservices on GCP (Cloud Run/SQL) serving 1000+ daily users.',
-      'Automated CI/CD with GitHub Actions and canary deploys; reduced release time by 80%.',
-      'Built core e-commerce features including catalog, search, checkout, order tracking, and payments.',
+      'Built an end-to-end hypergrocery delivery platform integrating payment, delivery, store, and customer apps.',
+      'Architected Golang + GCP Cloud Run microservices serving 1000+ daily users.',
+      'Automated CI/CD with GitHub Actions and canary deploys, cutting release latency 80%.',
     ]
   },
   {
@@ -86,8 +96,8 @@ const workExperience = [
     role: 'Software Engineer Intern',
     period: 'May \'22 - Aug \'22',
     responsibilities: [
-      'Built a scalable discussion forum using FastAPI, Redis queues, and background workers; added unit tests for CI reliability.',
-      'Developed a real-time notification system for task and deadline alerts, reaching 10,000+ users with sub-second latency.',
+      'Developed FastAPI + Redis services for real-time collaboration and notifications at sub-second latency for 10k+ users.',
+      'Implemented containerized CI testing and worker orchestration to improve fault tolerance and deployment reliability.',
     ]
   },
   {
@@ -95,9 +105,8 @@ const workExperience = [
     role: 'Software Engineer Intern',
     period: 'May \'21 - Jul \'21',
     responsibilities: [
-      'Integrated Salesforce with Great Plains (REST + ETL) syncing 10k+ records/day.',
-      'Built Python validation microservice, cutting errors by 90% and achieving 99.9% uptime.',
-      'Added unit and integration tests with nightly CI jobs, improving reliability and deployment stability.',
+      'Integrated Salesforce-Great Plains via REST/ETL microservice reducing sync errors 90% and achieving 99.9% uptime.',
+      'Added unit/integration testing with nightly builds, improving pipeline reliability and release automation.',
     ]
   },
   {
@@ -105,8 +114,8 @@ const workExperience = [
     role: 'Undergraduate Research Assistant',
     period: 'Jan \'21 - May \'21',
     responsibilities: [
-      'Wrote Python tooling to preprocess datasets and generate experiment plots; accelerated lab workflow by 30%.',
-      'Studied and implemented interval arithmetic and uncertainty propagation operations in Python.',
+      'Built Python pipelines for dataset preprocessing, interval arithmetic, and uncertainty quantification.',
+      'Automated data workflows and visualization scripts, accelerating research throughput 30%.',
     ]
   }
 ];
@@ -115,14 +124,14 @@ const education = [
   {
     institution: 'San Jose State University',
     degree: 'M.S. Software Engineering (Data Science)',
-    period: 'Expected Dec \'26',
+    period: 'Dec \'26',
     description: 'Specializing in data science, focusing on advanced machine learning, data engineering, and large-scale software systems.'
   },
   {
     institution: 'University of Alabama',
     degree: 'B.S. Computer Science & Mathematics',
-    period: 'Graduated May \'23',
-    description: 'Double major with coursework in Deep Learning, Data Mining, and Distributed Systems.'
+    period: 'May \'23',
+    description: 'Awarded Presidential, First Generation and Engineering Scholarship. Double major with coursework in Deep Learning, Data Mining, and Distributed Systems.'
   },
 ];
 
