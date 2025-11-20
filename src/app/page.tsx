@@ -2,7 +2,6 @@
 
 import { getContactFormSuggestions, type ContactFormSuggestionsInput } from '@/ai/flows/contact-form-suggestions';
 import { submitContactForm } from '@/app/actions';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -232,7 +231,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-5xl items-center justify-between">
+      <div className="container flex h-14 max-w-5xl items-center justify-between px-8">
         <a href="#home" className="flex items-center gap-2 font-bold text-lg">
           <Navigation className="h-5 w-5 text-primary" />
           <span className="font-headline">{profile.name}</span>
@@ -264,7 +263,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
 
 const Section = forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
   ({ id, className, children }, ref) => (
-    <section id={id} ref={ref} className={cn("container max-w-5xl py-16 md:py-24", className)}>
+    <section id={id} ref={ref} className={cn("container max-w-5xl py-20 md:py-28 px-8", className)}>
       {children}
     </section>
   )
@@ -279,40 +278,30 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 );
 
 const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
-  <Section id="home" ref={ref} className="!pt-20 md:!pt-28 text-center md:text-left">
-    <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
-        <div className="md:col-span-2 space-y-4">
-            <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
-                {profile.name}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0">
-                {profile.introduction}
-            </p>
-            <div className="flex justify-center md:justify-start gap-4 pt-4 flex-wrap">
-                <Button asChild>
-                    <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">
-                        <Linkedin /> LinkedIn
-                    </a>
-                </Button>
-                <Button variant="secondary" asChild>
-                    <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">
-                        <Github /> GitHub
-                    </a>
-                </Button>
-                <Button variant="outline" asChild>
-                    <a href={profile.socials.email}>
-                        <Mail /> Email
-                    </a>
-                </Button>
-            </div>
-        </div>
-        <div className="flex justify-center">
-        {profile.headshot && (
-            <Avatar className="h-48 w-48 md:h-64 md:w-64 border-4 border-primary/20 shadow-lg">
-                <AvatarImage src={profile.headshot.imageUrl} alt={profile.name} data-ai-hint={profile.headshot.imageHint} />
-                <AvatarFallback>{profile.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-            </Avatar>
-        )}
+  <Section id="home" ref={ref} className="!pt-24 md:!pt-32 text-center">
+    <div className="space-y-6">
+        <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
+            {profile.name}
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            {profile.introduction}
+        </p>
+        <div className="flex justify-center gap-4 pt-4 flex-wrap">
+            <Button asChild>
+                <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Linkedin /> LinkedIn
+                </a>
+            </Button>
+            <Button variant="secondary" asChild>
+                <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">
+                    <Github /> GitHub
+                </a>
+            </Button>
+            <Button variant="outline" asChild>
+                <a href={profile.socials.email}>
+                    <Mail /> Email
+                </a>
+            </Button>
         </div>
     </div>
   </Section>
