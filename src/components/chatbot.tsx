@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -20,6 +20,16 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPulse, setShowPulse] = useState(true);
+
+  // Stop pulsing after 10 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPulse(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -57,7 +67,7 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
       <div className="fixed bottom-6 right-6 z-50">
         <div className="relative">
           {/* Pulsing ring animation */}
-          {!isOpen && (
+          {!isOpen && showPulse && (
             <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
           )}
           <Button
