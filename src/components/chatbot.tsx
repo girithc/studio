@@ -55,14 +55,20 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
   return (
     <>
       <div className="fixed bottom-6 right-6 z-50">
-        <Button
-          size="icon"
-          className="rounded-full w-14 h-14 shadow-lg"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle chatbot"
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Bot className="w-6 h-6" />}
-        </Button>
+        <div className="relative">
+          {/* Pulsing ring animation */}
+          {!isOpen && (
+            <div className="absolute inset-0 rounded-full bg-primary/30 animate-ping" />
+          )}
+          <Button
+            size="icon"
+            className="relative rounded-full w-16 h-16 shadow-2xl bg-gradient-to-br from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300 hover:scale-110 shadow-primary/50"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle chatbot"
+          >
+            {isOpen ? <X className="w-7 h-7" /> : <Bot className="w-7 h-7" />}
+          </Button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -74,7 +80,7 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
             transition={{ duration: 0.2 }}
             className="fixed bottom-24 right-6 z-50"
           >
-            <Card className="w-80 md:w-96 h-[32rem] flex flex-col shadow-2xl">
+            <Card className="w-80 md:w-96 h-[32rem] flex flex-col shadow-2xl bg-white">
               <CardHeader className="flex-shrink-0">
                 <CardTitle className="flex items-center gap-2">
                   <Bot /> AI Assistant
@@ -92,8 +98,8 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
                           </Avatar>
                         )}
                         <div className={`rounded-lg px-3 py-2 text-sm max-w-[80%] ${message.role === 'user'
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-muted'
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted'
                           }`}
                         >
                           {message.content}

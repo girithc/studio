@@ -9,7 +9,6 @@ import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Briefcase, ExternalLink, Github, GraduationCap, Linkedin, Loader2, Mail, Menu, Navigation, Send, Sparkles } from 'lucide-react';
@@ -27,7 +26,7 @@ const profile = {
   socials: {
     linkedin: 'https://linkedin.com/in/girithchoudhary',
     github: 'https://github.com/girithc',
-    email: 'mailto:girith.choudhary@example.com',
+    email: 'mailto:girith.choudhary@sjsu.edu',
   },
 };
 
@@ -35,7 +34,11 @@ const projects = [
   {
     title: 'Email Automation Using AI Agents',
     description: 'Built a self-healing AI agent pipeline automating email, scheduling, and workspace tasks with adaptive recovery. Integrated NVIDIA NIM for GPU-accelerated LLM, embedding, and speech microservices with NeMo Guardrails for safe automation. Achieved 80% faster workflows via real-time updates, intent-driven coordination, and Riva ASR transcription.',
-    image: PlaceHolderImages.find(p => p.id === 'project-1'),
+    image: {
+      id: 'project-1',
+      imageUrl: '/assets/email.png',
+      imageHint: 'email automation'
+    },
     liveUrl: '#',
     githubUrl: '#',
     tags: ['LangChain', 'LangGraph', 'FastAPI', 'Google Workspace API', 'GCP Pub/Sub', 'Firebase', 'NVIDIA NIM', 'Riva ASR', 'NeMo Guardrails', 'GPT']
@@ -43,7 +46,11 @@ const projects = [
   {
     title: 'Universal Translator App',
     description: 'Created cross-language translator with real-time speech processing and LoRA-tuned models. Used WebSocket streaming via FastAPI for low-latency inference and adaptive language learning. Containerized and deployed app on Apple App Store.',
-    image: PlaceHolderImages.find(p => p.id === 'project-2'),
+    image: {
+      id: 'project-2',
+      imageUrl: '/assets/translate.png',
+      imageHint: 'translation app'
+    },
     liveUrl: '#',
     githubUrl: '#',
     tags: ['Flutter', 'FastAPI', 'Whisper', 'PyTorch', 'LoRA', 'Docker']
@@ -51,7 +58,11 @@ const projects = [
   {
     title: 'McKinsey Consultant Agent',
     description: 'Built an autonomous McKinsey-style consultant agent for strategic reasoning and hypothesis-driven research. Integrated NVIDIA NIM for GPU-accelerated LLM inference and retrieval, enabling faster multi-agent reasoning. Implemented recursive LangGraph agents for adaptive planning with React Flow visualizing dynamic hypothesis trees.',
-    image: PlaceHolderImages.find(p => p.id === 'project-3'),
+    image: {
+      id: 'project-3',
+      imageUrl: '/assets/mckinsey.png',
+      imageHint: 'consultant agent'
+    },
     liveUrl: '#',
     githubUrl: '#',
     tags: ['FastAPI', 'LangGraph', 'LangChain', 'React', 'AsyncIO', 'Microsoft Azure', 'NVIDIA NIM']
@@ -61,8 +72,8 @@ const projects = [
     description: 'Built a hybrid XGBoost–LSTM pipeline for race and in-lap prediction using pit, tire, and circuit telemetry (2.7 MAE). Integrated Qwen via NVIDIA NIM to generate explainable insights and enable interactive user queries on model outputs. Deployed FastAPI inference with Pydantic validation and multi-endpoint strategy API (/predict, /compare, /whatif).',
     image: {
       id: 'project-4',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXzation%7Cen%7C0%7C%7C1763399759%7C0&ixlib=rb-4.1.0&q=80&w=1080',
-      imageHint: 'data visualization'
+      imageUrl: '/assets/f1-racing.png',
+      imageHint: 'formula 1 racing strategy'
     },
     liveUrl: '#',
     githubUrl: '#',
@@ -319,7 +330,7 @@ const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
     <SectionTitle>Projects</SectionTitle>
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       {projects.map((project, index) => (
-        <Card key={index} className="flex flex-col overflow-hidden group bg-background/40 backdrop-blur-md border-white/10 hover:bg-background/60 transition-all">
+        <Card key={index} className="flex flex-col overflow-hidden group bg-background/40 backdrop-blur-md border-white/10 hover:bg-background/60 transition-all shadow-lg hover:shadow-2xl hover:shadow-primary/20">
           {project.image && (
             <div className="aspect-video overflow-hidden">
               <Image
@@ -420,163 +431,30 @@ const EducationSection = forwardRef<HTMLElement, {}>((props, ref) => (
 EducationSection.displayName = "EducationSection";
 
 const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
-  const { toast } = useToast();
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: { name: '', email: '', message: '' },
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isAiLoading, setIsAiLoading] = useState(false);
-  const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
-
-  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    setIsSubmitting(true);
-    try {
-      const result = await submitContactForm(data);
-      if (result.success) {
-        toast({
-          title: 'Success!',
-          description: result.message,
-        });
-        form.reset();
-      } else {
-        throw new Error('Submission failed');
-      }
-    } catch (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Uh oh! Something went wrong.',
-        description: 'There was a problem with your request.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleAiSuggestions = async () => {
-    setIsAiLoading(true);
-    setAiSuggestions([]);
-    try {
-      const input: ContactFormSuggestionsInput = {
-        name: profile.name,
-        education: education.map(e => `${e.degree} at ${e.institution}`),
-        projects: projects.map(p => p.title),
-        workExperience: workExperience.map(w => `${w.role} at ${w.company}`)
-      };
-      const result = await getContactFormSuggestions(input);
-      setAiSuggestions(result.suggestions);
-    } catch (error) {
-      console.error("AI suggestion error:", error);
-      toast({
-        variant: "destructive",
-        title: "AI Error",
-        description: "Could not fetch AI suggestions."
-      });
-    } finally {
-      setIsAiLoading(false);
-    }
-  };
-
-
   return (
     <Section id="contact" ref={ref} className="bg-muted/20 backdrop-blur-sm">
       <SectionTitle>Get in Touch</SectionTitle>
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="space-y-6">
+      <div className="max-w-2xl mx-auto">
+        <div className="space-y-6 text-center">
           <h3 className="text-2xl font-bold font-headline">Contact Information</h3>
           <p className="text-muted-foreground">
             Feel free to reach out via email or connect with me on social media. I'm always open to discussing new projects, creative ideas, or opportunities.
           </p>
-          <div className="space-y-4">
-            <a href={profile.socials.email} className="flex items-center gap-4 group">
+          <div className="space-y-4 pt-4">
+            <a href={profile.socials.email} className="flex items-center justify-center gap-4 group">
               <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              <span className="text-muted-foreground group-hover:text-primary transition-colors">girith.choudhary@example.com</span>
+              <span className="text-muted-foreground group-hover:text-primary transition-colors">girith.choudhary@sjsu.edu</span>
             </a>
-            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-4 group">
               <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               <span className="text-muted-foreground group-hover:text-primary transition-colors">linkedin.com/in/girithchoudhary</span>
             </a>
-            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-4 group">
               <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               <span className="text-muted-foreground group-hover:text-primary transition-colors">github.com/girithc</span>
             </a>
           </div>
-          <div className="pt-4">
-            <Button onClick={handleAiSuggestions} disabled={isAiLoading} variant="outline" className="text-accent border-accent hover:bg-accent/10 hover:text-accent">
-              {isAiLoading ? <Loader2 className="animate-spin" /> : <Sparkles />}
-              AI Message Suggestions
-            </Button>
-            {aiSuggestions.length > 0 && (
-              <Card className="mt-4 bg-accent/10 border-accent/20">
-                <CardHeader>
-                  <CardTitle className="text-lg text-accent">AI Suggestions</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-accent/90">
-                    {aiSuggestions.map((s, i) => <li key={i}>{s}</li>)}
-                  </ul>
-                </CardContent>
-              </Card>
-            )}
-          </div>
         </div>
-
-        <Card className="bg-background/40 backdrop-blur-md border-white/10">
-          <CardHeader>
-            <CardTitle>Send a Message</CardTitle>
-            <CardDescription>I'll get back to you as soon as possible.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your Name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input placeholder="your.email@example.com" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder="Tell me how I can help." {...field} rows={5} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" disabled={isSubmitting} className="w-full">
-                  {isSubmitting ? <Loader2 className="animate-spin" /> : <Send />}
-                  Send Message
-                </Button>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
       </div>
     </Section>
   );
