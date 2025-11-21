@@ -34,11 +34,11 @@ const profile = {
 const projects = [
   {
     title: 'Email Automation Using AI Agents',
-    description: 'Built self-healing agentic pipeline automating email, scheduling, and workspace tasks with adaptive recovery. Deployed GCP Pub/Sub microservices with Firebase notifications for iPhone users and real-time updates. Reduced customer email workflow time by 80% through autonomous coordination and intent-driven tasking.',
+    description: 'Built a self-healing AI agent pipeline automating email, scheduling, and workspace tasks with adaptive recovery. Integrated NVIDIA NIM for GPU-accelerated LLM, embedding, and speech microservices with NeMo Guardrails for safe automation. Achieved 80% faster workflows via real-time updates, intent-driven coordination, and Riva ASR transcription.',
     image: PlaceHolderImages.find(p => p.id === 'project-1'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['LangChain', 'FastAPI', 'LangGraph', 'Google Workspace API', 'GCP Pub/Sub', 'Whisper', 'Firebase', 'GPT']
+    tags: ['LangChain', 'LangGraph', 'FastAPI', 'Google Workspace API', 'GCP Pub/Sub', 'Firebase', 'NVIDIA NIM', 'Riva ASR', 'NeMo Guardrails', 'GPT']
   },
   {
     title: 'Universal Translator App',
@@ -50,23 +50,23 @@ const projects = [
   },
   {
     title: 'McKinsey Consultant Agent',
-    description: 'Built an autonomous McKinsey-style consultant agent for strategic reasoning and hypothesis-driven research. Implemented self-healing LangGraph agents enabling recursive analysis, validation, and adaptive planning. Integrated web search and Python grep tools for analytics with React Flow visualizing evolving hypothesis trees.',
+    description: 'Built an autonomous McKinsey-style consultant agent for strategic reasoning and hypothesis-driven research. Integrated NVIDIA NIM for GPU-accelerated LLM inference and retrieval, enabling faster multi-agent reasoning. Implemented recursive LangGraph agents for adaptive planning with React Flow visualizing dynamic hypothesis trees.',
     image: PlaceHolderImages.find(p => p.id === 'project-3'),
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['FastAPI', 'LangGraph', 'LangChain', 'React', 'AsyncIO', 'Vector DB', 'WebSockets', 'React Flow']
+    tags: ['FastAPI', 'LangGraph', 'LangChain', 'React', 'AsyncIO', 'Microsoft Azure', 'NVIDIA NIM']
   },
-   {
+  {
     title: 'Formula 1 Race Strategy System',
-    description: 'Built hybrid XGBoost-LSTM pipeline for race and in-lap prediction using pit, tire, and circuit telemetry (2.7 MAE). Deployed FastAPI inference with Pydantic validation, probabilistic outputs, and reload-safe joblib artifacts. Added scenario comparison, robustness scoring, and multi-endpoint strategy API (/predict, /compare, /whatif).',
+    description: 'Built a hybrid XGBoost–LSTM pipeline for race and in-lap prediction using pit, tire, and circuit telemetry (2.7 MAE). Integrated Qwen via NVIDIA NIM to generate explainable insights and enable interactive user queries on model outputs. Deployed FastAPI inference with Pydantic validation and multi-endpoint strategy API (/predict, /compare, /whatif).',
     image: {
-        id: 'project-4',
-        imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXphdGlvbnxlbnwwfHx8fDE3NjMzOTk3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        imageHint: 'data visualization'
+      id: 'project-4',
+      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXzation%7Cen%7C0%7C%7C1763399759%7C0&ixlib=rb-4.1.0&q=80&w=1080',
+      imageHint: 'data visualization'
     },
     liveUrl: '#',
     githubUrl: '#',
-    tags: ['FastAPI', 'Python', 'XGBoost', 'LSTM', 'NumPy/Pandas', 'Pydantic', 'Joblib', 'Next.js']
+    tags: ['FastAPI', 'Python', 'XGBoost', 'LSTM', 'NumPy/Pandas', 'Pydantic', 'Joblib', 'Next.js', 'NVIDIA NIM (Qwen)']
   }
 ];
 
@@ -77,8 +77,8 @@ const workExperience = [
     role: 'Software Engineer',
     period: 'Jun \'24 - Nov \'25',
     responsibilities: [
-        'Built agent-based ship management platform using quantized LLMs, LangGraph, and FastAPI microservices.',
-        'Deployed predictive models for diagnostics and cost estimation with RAG retrieval and WebSocket streaming.'
+      'Built agent-based ship management platform using quantized LLMs, LangGraph, and FastAPI microservices.',
+      'Deployed predictive models for diagnostics and cost estimation with RAG retrieval and WebSocket streaming.'
     ]
   },
   {
@@ -87,7 +87,7 @@ const workExperience = [
     period: 'Jun \'23 - May \'24',
     responsibilities: [
       'Built an end-to-end hypergrocery delivery platform integrating payment, delivery, store, and customer apps.',
-      'Architected Golang + GCP Cloud Run microservices serving 1000+ daily users.',
+      'Architected Golang + GCP Cloud Run microservices + Flutter apps serving 1000+ daily users.',
       'Automated CI/CD with GitHub Actions and canary deploys, cutting release latency 80%.',
     ]
   },
@@ -105,7 +105,7 @@ const workExperience = [
     role: 'Software Engineer Intern',
     period: 'May \'21 - Jul \'21',
     responsibilities: [
-      'Integrated Salesforce-Great Plains via REST/ETL microservice reducing sync errors 90% and achieving 99.9% uptime.',
+      'Integrated Salesforce–Great Plains via REST/ETL microservice reducing sync errors 90% and achieving 99.9% uptime.',
       'Added unit/integration testing with nightly builds, improving pipeline reliability and release automation.',
     ]
   },
@@ -115,7 +115,6 @@ const workExperience = [
     period: 'Jan \'21 - May \'21',
     responsibilities: [
       'Built Python pipelines for dataset preprocessing, interval arithmetic, and uncertainty quantification.',
-      'Automated data workflows and visualization scripts, accelerating research throughput 30%.',
     ]
   }
 ];
@@ -123,15 +122,15 @@ const workExperience = [
 const education = [
   {
     institution: 'San Jose State University',
-    degree: 'M.S. Software Engineering (Data Science)',
-    period: 'Dec \'26',
-    description: 'Specializing in data science, focusing on advanced machine learning, data engineering, and large-scale software systems.'
+    degree: 'M.S. Software Engineering (data science specialization)',
+    period: '\'26',
+    description: 'Relevant Coursework: Deep Learning, Machine Learning, Data Engineering, Data Mining, Software Systems, Enterprise Software Platforms, Data Structures & Algorithms, Operating Systems, Data Science, Software Security'
   },
   {
     institution: 'University of Alabama',
-    degree: 'B.S. Computer Science & Mathematics',
-    period: 'May \'23',
-    description: 'Awarded Presidential, First Generation and Engineering Scholarship. Double major with coursework in Deep Learning, Data Mining, and Distributed Systems.'
+    degree: 'B.S. Computer Science and Mathematics (double major)',
+    period: '\'23',
+    description: 'Awarded Presidential, First Generation and Engineering Scholarship. Mathematics Coursework: Statistics, Calculus I–III, Linear Algebra, Differential Equations, Probability, Engineering Statistics, Discrete Mathematics, Numerical Analysis, Linear Optimization Theory, Stochastic Processes'
   },
 ];
 
@@ -289,29 +288,29 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
 const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="home" ref={ref} className="!pt-32 md:!pt-40 text-center">
     <div className="space-y-6">
-        <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
-            {profile.name}
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            {profile.introduction}
-        </p>
-        <div className="flex justify-center gap-4 pt-4 flex-wrap">
-            <Button asChild>
-                <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">
-                    <Linkedin /> LinkedIn
-                </a>
-            </Button>
-            <Button variant="secondary" asChild>
-                <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">
-                    <Github /> GitHub
-                </a>
-            </Button>
-            <Button variant="outline" asChild>
-                <a href={profile.socials.email}>
-                    <Mail /> Email
-                </a>
-            </Button>
-        </div>
+      <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
+        {profile.name}
+      </h1>
+      <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        {profile.introduction}
+      </p>
+      <div className="flex justify-center gap-4 pt-4 flex-wrap">
+        <Button asChild>
+          <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer">
+            <Linkedin /> LinkedIn
+          </a>
+        </Button>
+        <Button variant="secondary" asChild>
+          <a href={profile.socials.github} target="_blank" rel="noopener noreferrer">
+            <Github /> GitHub
+          </a>
+        </Button>
+        <Button variant="outline" asChild>
+          <a href={profile.socials.email}>
+            <Mail /> Email
+          </a>
+        </Button>
+      </div>
     </div>
   </Section>
 ));
@@ -325,25 +324,25 @@ const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
         <Card key={index} className="flex flex-col overflow-hidden group">
           {project.image && (
             <div className="aspect-video overflow-hidden">
-                <Image
-                  src={project.image.imageUrl}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint={project.image.imageHint}
-                />
+              <Image
+                src={project.image.imageUrl}
+                alt={project.title}
+                width={600}
+                height={400}
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                data-ai-hint={project.image.imageHint}
+              />
             </div>
           )}
           <CardHeader>
             <CardTitle>{project.title}</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 space-y-4">
-             <CardDescription>{project.description}</CardDescription>
+            <CardDescription>{project.description}</CardDescription>
             <div className="flex flex-wrap gap-2">
-                {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full">{tag}</span>
-                ))}
+              {project.tags.map(tag => (
+                <span key={tag} className="text-xs font-semibold bg-primary/10 text-primary px-2 py-1 rounded-full">{tag}</span>
+              ))}
             </div>
           </CardContent>
           <CardFooter className="gap-4">
@@ -366,32 +365,32 @@ const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
 ProjectsSection.displayName = "ProjectsSection";
 
 const WorkExperienceSection = forwardRef<HTMLElement, {}>((props, ref) => (
-    <Section id="work" ref={ref} className="bg-muted/50">
-        <SectionTitle>Work Experience</SectionTitle>
-        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
-          {workExperience.map((job, index) => (
-            <div key={index} className="relative flex items-start">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
-                <Briefcase className="h-5 w-5" />
-              </div>
-              <Card className="ml-8 flex-1">
-                <CardHeader>
-                  <CardTitle>{job.role}</CardTitle>
-                  <CardDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                    <span>{job.company}</span>
-                    <span className="font-medium">{job.period}</span>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                    {job.responsibilities.map((resp, i) => <li key={i}>{resp}</li>)}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+  <Section id="work" ref={ref} className="bg-muted/50">
+    <SectionTitle>Work Experience</SectionTitle>
+    <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
+      {workExperience.map((job, index) => (
+        <div key={index} className="relative flex items-start">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
+            <Briefcase className="h-5 w-5" />
+          </div>
+          <Card className="ml-8 flex-1">
+            <CardHeader>
+              <CardTitle>{job.role}</CardTitle>
+              <CardDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                <span>{job.company}</span>
+                <span className="font-medium">{job.period}</span>
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+                {job.responsibilities.map((resp, i) => <li key={i}>{resp}</li>)}
+              </ul>
+            </CardContent>
+          </Card>
         </div>
-    </Section>
+      ))}
+    </div>
+  </Section>
 ));
 WorkExperienceSection.displayName = "WorkExperienceSection";
 
@@ -429,11 +428,11 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
     resolver: zodResolver(contactFormSchema),
     defaultValues: { name: '', email: '', message: '' },
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([]);
-  
+
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
     setIsSubmitting(true);
     try {
@@ -462,23 +461,23 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
     setIsAiLoading(true);
     setAiSuggestions([]);
     try {
-        const input: ContactFormSuggestionsInput = {
-            name: profile.name,
-            education: education.map(e => `${e.degree} at ${e.institution}`),
-            projects: projects.map(p => p.title),
-            workExperience: workExperience.map(w => `${w.role} at ${w.company}`)
-        };
-        const result = await getContactFormSuggestions(input);
-        setAiSuggestions(result.suggestions);
+      const input: ContactFormSuggestionsInput = {
+        name: profile.name,
+        education: education.map(e => `${e.degree} at ${e.institution}`),
+        projects: projects.map(p => p.title),
+        workExperience: workExperience.map(w => `${w.role} at ${w.company}`)
+      };
+      const result = await getContactFormSuggestions(input);
+      setAiSuggestions(result.suggestions);
     } catch (error) {
-        console.error("AI suggestion error:", error);
-        toast({
-            variant: "destructive",
-            title: "AI Error",
-            description: "Could not fetch AI suggestions."
-        });
+      console.error("AI suggestion error:", error);
+      toast({
+        variant: "destructive",
+        title: "AI Error",
+        description: "Could not fetch AI suggestions."
+      });
     } finally {
-        setIsAiLoading(false);
+      setIsAiLoading(false);
     }
   };
 
@@ -488,98 +487,98 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
       <SectionTitle>Get in Touch</SectionTitle>
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
-            <h3 className="text-2xl font-bold font-headline">Contact Information</h3>
-            <p className="text-muted-foreground">
-              Feel free to reach out via email or connect with me on social media. I'm always open to discussing new projects, creative ideas, or opportunities.
-            </p>
-            <div className="space-y-4">
-                <a href={profile.socials.email} className="flex items-center gap-4 group">
-                    <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">girith.choudhary@example.com</span>
-                </a>
-                <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                    <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">linkedin.com/in/girithchoudhary</span>
-                </a>
-                <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                    <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-muted-foreground group-hover:text-primary transition-colors">github.com/girithc</span>
-                </a>
-            </div>
-             <div className="pt-4">
-                <Button onClick={handleAiSuggestions} disabled={isAiLoading} variant="outline" className="text-accent border-accent hover:bg-accent/10 hover:text-accent">
-                    {isAiLoading ? <Loader2 className="animate-spin" /> : <Sparkles />}
-                    AI Message Suggestions
-                </Button>
-                {aiSuggestions.length > 0 && (
-                    <Card className="mt-4 bg-accent/10 border-accent/20">
-                        <CardHeader>
-                            <CardTitle className="text-lg text-accent">AI Suggestions</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <ul className="list-disc list-inside space-y-1 text-sm text-accent/90">
-                                {aiSuggestions.map((s, i) => <li key={i}>{s}</li>)}
-                            </ul>
-                        </CardContent>
-                    </Card>
-                )}
-            </div>
+          <h3 className="text-2xl font-bold font-headline">Contact Information</h3>
+          <p className="text-muted-foreground">
+            Feel free to reach out via email or connect with me on social media. I'm always open to discussing new projects, creative ideas, or opportunities.
+          </p>
+          <div className="space-y-4">
+            <a href={profile.socials.email} className="flex items-center gap-4 group">
+              <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <span className="text-muted-foreground group-hover:text-primary transition-colors">girith.choudhary@example.com</span>
+            </a>
+            <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+              <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <span className="text-muted-foreground group-hover:text-primary transition-colors">linkedin.com/in/girithchoudhary</span>
+            </a>
+            <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+              <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <span className="text-muted-foreground group-hover:text-primary transition-colors">github.com/girithc</span>
+            </a>
+          </div>
+          <div className="pt-4">
+            <Button onClick={handleAiSuggestions} disabled={isAiLoading} variant="outline" className="text-accent border-accent hover:bg-accent/10 hover:text-accent">
+              {isAiLoading ? <Loader2 className="animate-spin" /> : <Sparkles />}
+              AI Message Suggestions
+            </Button>
+            {aiSuggestions.length > 0 && (
+              <Card className="mt-4 bg-accent/10 border-accent/20">
+                <CardHeader>
+                  <CardTitle className="text-lg text-accent">AI Suggestions</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-accent/90">
+                    {aiSuggestions.map((s, i) => <li key={i}>{s}</li>)}
+                  </ul>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
 
         <Card>
-            <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-                <CardDescription>I'll get back to you as soon as possible.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                        <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormLabel>Name</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Your Name" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormLabel>Email</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="your.email@example.com" {...field} />
-                                 </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="message"
-                            render={({ field }) => (
-                                <FormItem>
-                                <FormLabel>Message</FormLabel>
-                                <FormControl>
-                                    <Textarea placeholder="Tell me how I can help." {...field} rows={5} />
-                                </FormControl>
-                                <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <Button type="submit" disabled={isSubmitting} className="w-full">
-                            {isSubmitting ? <Loader2 className="animate-spin" /> : <Send />}
-                            Send Message
-                        </Button>
-                    </form>
-                </Form>
-            </CardContent>
+          <CardHeader>
+            <CardTitle>Send a Message</CardTitle>
+            <CardDescription>I'll get back to you as soon as possible.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your Name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="your.email@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Tell me how I can help." {...field} rows={5} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" disabled={isSubmitting} className="w-full">
+                  {isSubmitting ? <Loader2 className="animate-spin" /> : <Send />}
+                  Send Message
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
         </Card>
       </div>
     </Section>
@@ -588,9 +587,9 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
 ContactSection.displayName = "ContactSection";
 
 const Footer = () => (
-    <footer className="border-t">
-        <div className="container max-w-5xl py-6 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} {profile.name}. All Rights Reserved.</p>
-        </div>
-    </footer>
+  <footer className="border-t">
+    <div className="container max-w-5xl py-6 text-center text-sm text-muted-foreground">
+      <p>&copy; {new Date().getFullYear()} {profile.name}. All Rights Reserved.</p>
+    </div>
+  </footer>
 );
