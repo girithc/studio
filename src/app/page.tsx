@@ -123,13 +123,11 @@ const education = [
   {
     institution: 'San Jose State University',
     degree: 'M.S. Software Engineering (data science specialization)',
-    period: '\'26',
     description: 'Relevant Coursework: Deep Learning, Machine Learning, Data Engineering, Data Mining, Software Systems, Enterprise Software Platforms, Data Structures & Algorithms, Operating Systems, Data Science, Software Security'
   },
   {
     institution: 'University of Alabama',
     degree: 'B.S. Computer Science and Mathematics (double major)',
-    period: '\'23',
     description: 'Awarded Presidential, First Generation and Engineering Scholarship. Mathematics Coursework: Statistics, Calculus I–III, Linear Algebra, Differential Equations, Probability, Engineering Statistics, Discrete Mathematics, Numerical Analysis, Linear Optimization Theory, Stochastic Processes'
   },
 ];
@@ -271,7 +269,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
 
 const Section = forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
   ({ id, className, children }, ref) => (
-    <section id={id} ref={ref} className={cn("container max-w-5xl py-24 md:py-32 px-8", className)}>
+    <section id={id} ref={ref} className={cn("container max-w-5xl py-12 md:py-16 px-8", className)}>
       {children}
     </section>
   )
@@ -280,14 +278,14 @@ Section.displayName = "Section";
 
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl mb-12 text-center">
+  <h2 className="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl mb-8 text-center">
     {children}
   </h2>
 );
 
 const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
-  <Section id="home" ref={ref} className="!pt-32 md:!pt-40 text-center">
-    <div className="space-y-6">
+  <Section id="home" ref={ref} className="!pt-20 md:!pt-24 text-center">
+    <div className="space-y-4">
       <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
         {profile.name}
       </h1>
@@ -397,7 +395,7 @@ WorkExperienceSection.displayName = "WorkExperienceSection";
 const EducationSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="education" ref={ref}>
     <SectionTitle>Education</SectionTitle>
-    <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
+    <div className="relative space-y-6 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
       {education.map((item, index) => (
         <div key={index} className="relative flex items-start">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
@@ -408,7 +406,6 @@ const EducationSection = forwardRef<HTMLElement, {}>((props, ref) => (
               <CardTitle>{item.degree}</CardTitle>
               <CardDescription className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                 <span>{item.institution}</span>
-                <span className="font-medium">{item.period}</span>
               </CardDescription>
             </CardHeader>
             <CardContent>
