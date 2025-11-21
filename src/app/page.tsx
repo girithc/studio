@@ -22,7 +22,7 @@ import { Chatbot } from '@/components/chatbot';
 
 // --- DATA ---
 const profile = {
-  name: 'Girth Choudhary',
+  name: 'Girith Choudhary',
   introduction: "I'm a passionate Software Engineer with a specialization in data science, experienced in building intelligent applications and scalable systems. I thrive on solving complex problems and creating impactful, data-driven solutions.",
   socials: {
     linkedin: 'https://linkedin.com/in/girithchoudhary',
@@ -236,7 +236,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/40 backdrop-blur-xl supports-[backdrop-filter]:bg-background/30">
       <div className="container flex h-14 max-w-5xl items-center justify-between px-8">
         <a href="#home" className="flex items-center gap-2 font-bold text-lg">
           <Navigation className="h-5 w-5 text-primary" />
@@ -269,7 +269,7 @@ const Header = ({ activeSection }: { activeSection: string }) => {
 
 const Section = forwardRef<HTMLElement, { id: string; className?: string; children: React.ReactNode }>(
   ({ id, className, children }, ref) => (
-    <section id={id} ref={ref} className={cn("container max-w-5xl py-12 md:py-16 px-8", className)}>
+    <section id={id} ref={ref} className={cn("container max-w-5xl py-8 md:py-12 px-8", className)}>
       {children}
     </section>
   )
@@ -278,14 +278,14 @@ Section.displayName = "Section";
 
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl mb-8 text-center">
+  <h2 className="font-headline text-3xl font-bold tracking-tight text-primary md:text-4xl mb-6 text-center">
     {children}
   </h2>
 );
 
 const HeroSection = forwardRef<HTMLElement, {}>((props, ref) => (
-  <Section id="home" ref={ref} className="!pt-20 md:!pt-24 text-center">
-    <div className="space-y-4">
+  <Section id="home" ref={ref} className="!pt-16 md:!pt-20 text-center">
+    <div className="space-y-3">
       <h1 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tighter">
         {profile.name}
       </h1>
@@ -317,9 +317,9 @@ HeroSection.displayName = "HeroSection";
 const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="projects" ref={ref}>
     <SectionTitle>Projects</SectionTitle>
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       {projects.map((project, index) => (
-        <Card key={index} className="flex flex-col overflow-hidden group">
+        <Card key={index} className="flex flex-col overflow-hidden group bg-background/40 backdrop-blur-md border-white/10 hover:bg-background/60 transition-all">
           {project.image && (
             <div className="aspect-video overflow-hidden">
               <Image
@@ -363,9 +363,9 @@ const ProjectsSection = forwardRef<HTMLElement, {}>((props, ref) => (
 ProjectsSection.displayName = "ProjectsSection";
 
 const WorkExperienceSection = forwardRef<HTMLElement, {}>((props, ref) => (
-  <Section id="work" ref={ref} className="bg-muted/50">
+  <Section id="work" ref={ref} className="bg-muted/20 backdrop-blur-sm">
     <SectionTitle>Work Experience</SectionTitle>
-    <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
+    <div className="relative space-y-4 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
       {workExperience.map((job, index) => (
         <div key={index} className="relative flex items-start">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
@@ -395,7 +395,7 @@ WorkExperienceSection.displayName = "WorkExperienceSection";
 const EducationSection = forwardRef<HTMLElement, {}>((props, ref) => (
   <Section id="education" ref={ref}>
     <SectionTitle>Education</SectionTitle>
-    <div className="relative space-y-6 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
+    <div className="relative space-y-4 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-primary/20">
       {education.map((item, index) => (
         <div key={index} className="relative flex items-start">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground flex-shrink-0">
@@ -480,7 +480,7 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
 
 
   return (
-    <Section id="contact" ref={ref} className="bg-muted/50">
+    <Section id="contact" ref={ref} className="bg-muted/20 backdrop-blur-sm">
       <SectionTitle>Get in Touch</SectionTitle>
       <div className="grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
@@ -522,7 +522,7 @@ const ContactSection = forwardRef<HTMLElement, {}>((props, ref) => {
           </div>
         </div>
 
-        <Card>
+        <Card className="bg-background/40 backdrop-blur-md border-white/10">
           <CardHeader>
             <CardTitle>Send a Message</CardTitle>
             <CardDescription>I'll get back to you as soon as possible.</CardDescription>

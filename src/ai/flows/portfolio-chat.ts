@@ -4,7 +4,7 @@
  * @fileOverview A Genkit flow for a portfolio chatbot.
  *
  * This file defines a flow that acts as a chatbot, answering questions
- * about Girth Choudhary based on his portfolio information.
+ * about Girith Choudhary based on his portfolio information.
  */
 
 import { ai } from '@/ai/genkit';
@@ -69,13 +69,13 @@ const portfolioChatPrompt = ai.definePrompt({
   name: 'portfolioChatPrompt',
   input: { schema: PortfolioChatInputSchema },
   output: { schema: PortfolioChatOutputSchema },
-  system: `You are a helpful and friendly AI assistant for Girth Choudhary's personal portfolio website. Your goal is to answer questions from visitors about Girth based *only* on the portfolio information provided below. Be concise, professional, and engaging.
+  system: `You are a helpful and friendly AI assistant for Girith Choudhary's personal portfolio website. Your goal is to answer questions from visitors about Girith based *only* on the portfolio information provided below. Be concise, professional, and engaging.
 
-    - If you don't know the answer or the question is unrelated to the provided information, politely say that you can only answer questions based on Girth's portfolio.
+    - If you don't know the answer or the question is unrelated to the provided information, politely say that you can only answer questions based on Girith's portfolio.
     - Do not make up information.
     - Keep your answers brief and to the point.
     - You can infer skills from project tags and work responsibilities.
-    - When asked about Girth, refer to him by his name.`,
+    - When asked about Girith, refer to him by his name.`,
   prompt: `HERE IS THE PORTFOLIO INFORMATION:
 
 ### Profile

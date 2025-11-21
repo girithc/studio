@@ -79,7 +79,7 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
                 <CardTitle className="flex items-center gap-2">
                   <Bot /> AI Assistant
                 </CardTitle>
-                <CardDescription>Ask me anything about Girth's portfolio!</CardDescription>
+                <CardDescription>Ask me anything about Girith's portfolio!</CardDescription>
               </CardHeader>
               <CardContent className="flex-1 overflow-hidden p-0">
                 <ScrollArea className="h-full px-6 py-4">
@@ -91,15 +91,14 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
                             <AvatarFallback><Bot size={18} /></AvatarFallback>
                           </Avatar>
                         )}
-                        <div className={`rounded-lg px-3 py-2 text-sm max-w-[80%] ${
-                            message.role === 'user'
-                              ? 'bg-primary text-primary-foreground'
-                              : 'bg-muted'
+                        <div className={`rounded-lg px-3 py-2 text-sm max-w-[80%] ${message.role === 'user'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-muted'
                           }`}
                         >
                           {message.content}
                         </div>
-                         {message.role === 'user' && (
+                        {message.role === 'user' && (
                           <Avatar className="w-8 h-8 border-2 border-muted">
                             <AvatarFallback><User size={18} /></AvatarFallback>
                           </Avatar>
@@ -109,7 +108,7 @@ export function Chatbot({ portfolioData }: { portfolioData: PortfolioChatInput['
                     {isLoading && (
                       <div className="flex items-start gap-3">
                         <Avatar className="w-8 h-8 border-2 border-primary/20">
-                           <AvatarFallback><Bot size={18} /></AvatarFallback>
+                          <AvatarFallback><Bot size={18} /></AvatarFallback>
                         </Avatar>
                         <div className="bg-muted rounded-lg px-3 py-2">
                           <Loader2 className="w-5 h-5 animate-spin text-primary" />
